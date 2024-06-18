@@ -1,0 +1,256 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e6e8e9b2;
+  min-height: 200vh;
+  max-height: fit-content;
+  background-size: cover;
+  /* background-repeat: no-repeat; */
+  background-position: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding-top: 50px;
+  /* Adjust this value if your navbar height changes */
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+nav {
+  border-radius: 3px;
+  background-color: rgb(49, 48, 48);
+  box-shadow: 3px 3px 5px rgb(216, 212, 212);
+}
+
+nav .logo {
+  /* padding-top: 10px; */
+  width: 30%;
+  height: 40px;
+}
+
+nav .logo img {
+  padding-left: 10px;
+  width: 40%;
+  height: 46px;
+  object-fit: cover;
+}
+
+nav ul {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+nav li {
+  height: 50px;
+}
+
+nav a {
+  height: 100%;
+  padding: 0 30px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: rgb(15, 15, 15);
+}
+
+nav .link {
+  height: 100%;
+  padding: 0 30px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: rgb(212, 210, 210);
+}
+
+nav .hideOnMobile:hover {
+  color: #ffffff;
+  background-color: #4b4949;
+}
+
+#login:hover {
+  background-color: #f0f0f0;
+}
+nav li:first-child {
+  margin-right: auto;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  z-index: 10010;
+}
+
+.sidebar li {
+  width: 100%;
+}
+
+.sidebar a {
+  width: 100%;
+}
+
+.menu-button {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .hideOnMobile {
+    display: none;
+  }
+  .menu-button {
+    display: block;
+  }
+}
+
+@media (max-width: 400px) {
+  .sidebar {
+    width: 100%;
+  }
+}
+
+#login {
+  color: white;
+  background-color: #df4213;
+  border-radius: 5px;
+  border-color: #df4213;
+  padding: 5px 15px; /* Added some padding to make the link more appealing */
+  transition: all 0.3s ease; /* Added smooth transition for responsiveness */
+}
+
+/* Centering the button */
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: calc(100vh - 50px); Adjust height to account for the navbar */
+  padding-top: 20px; /* Ensure content starts below the navbar */
+}
+
+@media (max-width: 1200px) {
+  .map-button {
+    padding: 8px 18px;
+  }
+}
+
+@media (max-width: 800px) {
+  .map-button {
+    padding: 7px 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .map-button {
+    padding: 6px 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .map-button {
+    padding: 5px 12px;
+    font-size: 14px;
+  }
+}
+
+/* map  */
+
+#map {
+  height: 600px;
+  position: relative;
+}
+
+.map-button {
+  border-radius: 12px;
+  position: absolute;
+  background-color: #aeecae;
+  /* top: 0px;
+              margin: .5%;
+              right: 46%; */
+  z-index: 1000;
+  padding: 5px;
+  border-color: rgba(32, 27, 27, 0);
+  color: rgb(61, 57, 57);
+}
+
+.map-button:hover {
+  background-color: #f7f7f7;
+  color: #000;
+}
+
+.map-button2 {
+  /* border-radius: 12px; */
+  position: absolute;
+  background-color: #aeecae;
+  top: 0px;
+  margin: 0.5%;
+  right: 76%;
+  z-index: 1000;
+  /* padding: 5px; */
+  border-color: rgba(32, 27, 27, 0);
+  color: rgb(61, 57, 57);
+}
+
+.map-button2:hover {
+  background-color: #f7f7f7;
+  color: #000;
+}
+
+.map-button1 {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 1000;
+}
+
+img {
+  margin: 0%;
+  padding: 0%;
+  width: 25px;
+  height: 25px;
+}
+
+.filter-modal {
+  display: none;
+  position: relative;
+  z-index: 1001;
+  left: 18.5%;
+  top: 30%;
+  transform: translate(-50%, -50%);
+  background-color: #a8cbba00;
+  padding: 20px;
+  border: 0.5px solid #9d8181;
+  box-shadow: 0px 0px 6px rgb(95 77 77 / 77%);
+  border-radius: 25px;
+}
+
+.filter-modal.active {
+  display: inline-block;
+}
+
+.filter-modal button {
+  border-radius: 10px;
+  background: #d7dfe1bd;
+  margin: 5px;
+  color: black;
+}
