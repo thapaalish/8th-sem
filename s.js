@@ -64,21 +64,21 @@ const jsonData = [
   },
 ];
 
-jsonData.forEach((station) => {
+jsonData.forEach((scenic) => {
   let popupContent = `
-    <h2>${station.name}</h2>
-    <p>${station.address}, ${station.city}</p>
-    <p>Phone: ${station.telephone}</p>
+    <h2>${scenic.name}</h2>
+    <p>${scenic.address}, ${scenic.city}</p>
+    
   `;
 
-  const stationMarker = L.marker([station.latitude, station.longitude], {
-    title: station.name,
+  const scenicMarker = L.marker([scenic.latitude, scenic.longitude], {
+    title: scenic.name,
     draggable: false,
   }).bindPopup(popupContent);
 
-  stationMarker.addTo(map);
+  scenicMarker.addTo(map);
 
-  stationMarker.on("click", function () {
+  scenicMarker.on("click", function () {
     this.openPopup();
   });
 });
@@ -90,11 +90,9 @@ function createRoute() {
   isCalculating = true;
 
   const startingPoint = jsonData.find(
-    (station) => station.name === "Starting Point"
+    (scenic) => scenic.name === "Starting Point"
   );
-  const endingPoint = jsonData.find(
-    (station) => station.name === "Ending Point"
-  );
+  const endingPoint = jsonData.find((scenic) => scenic.name === "Ending Point");
 
   if (!startingPoint || !endingPoint) {
     alert("Starting or Ending Point not found in data.");
@@ -103,8 +101,8 @@ function createRoute() {
   }
 
   const intermediatePoints = jsonData.filter(
-    (station) =>
-      station.name !== "Starting Point" && station.name !== "Ending Point"
+    (scenic) =>
+      scenic.name !== "Starting Point" && scenic.name !== "Ending Point"
   );
 
   const points = [startingPoint, ...intermediatePoints, endingPoint];
@@ -195,11 +193,11 @@ function createRoute() {
         },
         router: L.Routing.osrmv1({
           serviceUrl: "https://router.project-osrm.org/route/v1",
-          profile: "driving",
+          profile: "walking",
           options: {
             steps: true,
             overview: "full",
-            alternatives: false,
+            alternatives: true,
             geometries: "polyline",
             annotations: true,
             radiuses: Array(routeWaypoints.length).fill(200),
